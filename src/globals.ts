@@ -14,10 +14,6 @@ import { Blob as NodeBlob, File as NodeFile } from '@web-std/file'
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv {
-      NODE_ENV: 'development' | 'production' | 'test'
-    }
-
     interface Global {
       Blob: typeof Blob
       File: typeof File

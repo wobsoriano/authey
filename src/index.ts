@@ -29,11 +29,18 @@ const actions: AuthAction[] = [
   '_log',
 ]
 
+function shouldTrustHost() {
+  return !!(process.env.AUTH_TRUST_HOST ?? process.env.VERCEL ?? process.env.NODE_ENV === 'development')
+}
+
 export function createAuthMiddleware(options: AuthOptions) {
   const {
     prefix = '/api/auth',
     ...authOptions
   } = options
+
+  options.secret ??= process.env.AUTH_SECRET
+  options.trustHost ??= shouldTrustHost()
 
   return async (
     req: IncomingMessage,
@@ -67,6 +74,10 @@ export async function getSession(
   options: AuthOptions,
 ): Promise<Session | null> {
   const { prefix = '/api/auth', ...authOptions } = options
+
+  options.secret ??= process.env.AUTH_SECRET
+  options.trustHost ??= shouldTrustHost()
+
   const nodeHeaders = new Headers()
 
   for (const key in req.headers) {
