@@ -21,7 +21,17 @@ import GithubProvider from '@auth/core/providers/github'
 
 const app = express()
 
-const authOptions: AuthOptions = {}
+const authOptions: AuthOptions = {
+  secret: process.env.AUTH_SECRET,
+  trustHost: process.env.AUTH_TRUST_HOST,
+  providers: [
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    }),
+  ],
+}
+
 app.use(createAuthMiddleware(authOptions))
 ```
 
