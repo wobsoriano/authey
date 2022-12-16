@@ -1,4 +1,5 @@
 import type { IncomingMessage } from 'http'
+import type { NodeMiddleware } from '@hattip/adapter-node'
 import { createMiddleware } from '@hattip/adapter-node'
 import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/core'
 import { AuthHandler } from '@auth/core'
@@ -29,7 +30,7 @@ const actions: AuthAction[] = [
   '_log',
 ]
 
-export function createAuthMiddleware(options: AuthOptions) {
+export function createAuthMiddleware<T = NodeMiddleware>(options: AuthOptions) {
   const {
     prefix = '/api/auth',
     platformAdapter = createMiddleware,
@@ -49,7 +50,7 @@ export function createAuthMiddleware(options: AuthOptions) {
     return ctx.passThrough()
   }
 
-  return platformAdapter(handler as any)
+  return platformAdapter(handler as any) as T
 }
 
 export async function getSession(
