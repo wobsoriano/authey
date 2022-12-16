@@ -49,6 +49,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
     "@auth/core": "^0.1.4",
+    "@types/supertest": "^2.0.12",
     "bumpp": "^8.2.1",
     "eslint": "^8.29.0",
     "h3": "^1.0.2",
