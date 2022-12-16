@@ -1,6 +1,6 @@
 # Authey
 
-Universal support for [Auth.js](https://authjs.dev/).
+Expose [Auth.js](https://authjs.dev/) [REST APIs](https://authjs.dev/reference/rest-api) to your express/[connect](https://www.npmjs.com/package/connect) apps.
 
 ## Install
 
@@ -48,8 +48,6 @@ async function build() {
   return fastify
 }
 ```
-
-The middleware supports any express/[connect](https://www.npmjs.com/package/connect) syntax.
 
 ## License
 
