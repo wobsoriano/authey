@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@hattip/adapter-node": "^0.0.22",
+    "node-fetch-native": "^1.0.1",
     "oauth4webapi": "^2.0.5",
     "requrl": "^3.0.2"
   },
@@ -57,10 +58,5 @@
   },
   "eslintConfig": {
     "extends": "@antfu"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "oauth4webapi@2.0.5": "patches/oauth4webapi@2.0.5.patch"
-    }
   }
 }

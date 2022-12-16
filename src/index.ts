@@ -1,4 +1,5 @@
 import type { IncomingMessage } from 'http'
+import 'node-fetch-native/polyfill'
 import type { NodeMiddleware } from '@hattip/adapter-node'
 import { createMiddleware } from '@hattip/adapter-node'
 import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/core'

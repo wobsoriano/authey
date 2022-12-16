@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "esno --no-experimental-fetch ./server.ts"
+    "start": "esno ./server.ts"
   },
   "dependencies": {
     "auth-universal": "workspace:*",
