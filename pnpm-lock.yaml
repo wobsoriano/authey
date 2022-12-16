@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@antfu/eslint-config': ^0.27.0
       '@auth/core': ^0.1.4
+      '@polka/send-type': ^0.5.2
       '@types/supertest': ^2.0.12
       '@web-std/fetch': ^4.1.0
       '@web-std/file': ^3.0.2
@@ -21,6 +22,7 @@ importers:
       typescript: ^4.9.4
       vitest: ^0.24.5
     dependencies:
+      '@polka/send-type': 0.5.2
       '@web-std/fetch': 4.1.0
       '@web-std/file': 3.0.2
       '@web-std/stream': 1.0.1
@@ -398,6 +400,10 @@ packages:
   /@panva/hkdf/1.0.2:
     resolution: {integrity: sha512-MSAs9t3Go7GUkMhpKC44T58DJ5KGk2vBo+h1cqQeqlMfdGkxaVB78ZWpv9gYi/g2fa4sopag9gJsNvS8XGgWJA==}
     dev: true
+
+  /@polka/send-type/0.5.2:
+    resolution: {integrity: sha512-jGXalKihnhGQmMQ+xxfxrRfI2cWs38TIZuwgYpnbQDD4r9TkOiU3ocjAS+6CqqMNQNAu9Ul2iHU5YFRDODak2w==}
+    dev: false
 
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
