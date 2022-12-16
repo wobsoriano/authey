@@ -1,7 +1,7 @@
 import { URL } from 'node:url'
 import * as dotenv from 'dotenv'
 import express from 'express'
-import { createAuthMiddleware, getSession } from 'auth-universal'
+import { createAuthMiddleware, getSession } from 'authey'
 import type { AuthOptions } from '@auth/core'
 import GithubProvider from '@auth/core/providers/github'
 dotenv.config()

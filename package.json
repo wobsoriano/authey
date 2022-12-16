@@ -1,16 +1,16 @@
 {
-  "name": "auth-universal",
+  "name": "authey",
   "version": "0.0.0",
   "packageManager": "pnpm@7.18.0",
   "description": "",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/wobsoriano/auth-universal#readme",
+  "homepage": "https://github.com/wobsoriano/authey#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wobsoriano/auth-universal.git"
+    "url": "git+https://github.com/wobsoriano/authey.git"
   },
-  "bugs": "https://github.com/wobsoriano/auth-universal/issues",
+  "bugs": "https://github.com/wobsoriano/authey/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
@@ -42,7 +42,6 @@
   "dependencies": {
     "@hattip/adapter-node": "^0.0.22",
     "node-fetch-native": "^1.0.1",
-    "oauth4webapi": "^2.0.5",
     "requrl": "^3.0.2"
   },
   "devDependencies": {

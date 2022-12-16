@@ -6,7 +6,7 @@
     "start": "esno ./server.ts"
   },
   "dependencies": {
-    "auth-universal": "workspace:*",
+    "authey": "workspace:*",
     "express": "^4.18.2"
   },
   "devDependencies": {
