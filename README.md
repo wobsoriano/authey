@@ -25,9 +25,31 @@ const authOptions: AuthOptions = {}
 app.use(createAuthMiddleware(authOptions))
 ```
 
-Now, try to access `/api/auth/signin`!
+Nuxt
 
-The middleware supports any express/[connect](https://www.npmjs.com/package/connect)-based syntax.
+```ts
+// server/middleware/auth.ts
+import { createAuthMiddleware } from 'authey'
+
+export default fromNodeMiddleware(createAuthMiddleware({}))
+```
+
+Fastify
+
+```ts
+import Fastify from 'fastify'
+import Middie from '@fastify/middie'
+import { createAuthMiddleware } from 'authey'
+
+async function build() {
+  const fastify = Fastify()
+  await fastify.register(require('@fastify/middie'))
+  fastify.use(createAuthMiddleware({}))
+  return fastify
+}
+```
+
+The middleware supports any express/[connect](https://www.npmjs.com/package/connect) syntax.
 
 ## License
 
