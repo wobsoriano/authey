@@ -1,11 +1,13 @@
-import type { IncomingMessage } from 'http'
-import 'node-fetch-native/polyfill'
-import type { NodeMiddleware } from '@hattip/adapter-node'
-import { createMiddleware } from '@hattip/adapter-node'
+import type { IncomingMessage, ServerResponse } from 'http'
 import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/core'
 import { AuthHandler } from '@auth/core'
 import getURL from 'requrl'
-import type { HattipHandler } from '@hattip/core'
+import { createNodeRequest, sendNodeResponse } from './request'
+import installCrypto from './crypto'
+import { installGlobals } from './globals'
+
+installCrypto()
+installGlobals()
 
 interface AuthOptions extends BaseAuthOptions {
   /**
@@ -13,10 +15,6 @@ interface AuthOptions extends BaseAuthOptions {
    * @default '/api/auth'
    */
   prefix?: string
-  /**
-   * @experimental
-   */
-  platformAdapter?: (handler: HattipHandler) => unknown
 }
 
 const actions: AuthAction[] = [
@@ -31,27 +29,37 @@ const actions: AuthAction[] = [
   '_log',
 ]
 
-export function createAuthMiddleware<T = NodeMiddleware>(options: AuthOptions) {
+export function createAuthMiddleware(options: AuthOptions) {
   const {
     prefix = '/api/auth',
-    platformAdapter = createMiddleware,
     ...authOptions
   } = options
 
-  async function handler(ctx: { request: Request; passThrough(): void }) {
-    const parsedUrl = new URL(ctx.request.url)
-    const [action] = parsedUrl.pathname.slice(prefix.length + 1).split('/')
+  return async (
+    req: IncomingMessage,
+    res: ServerResponse,
+    next: (err?: Error) => void,
+  ) => {
+    try {
+      const request = createNodeRequest(req)
+      const parsedUrl = new URL(request.url)
+      const [action] = parsedUrl.pathname.slice(prefix.length + 1).split('/')
 
-    if (
-      actions.includes(action as AuthAction)
-      && parsedUrl.pathname.startsWith(`${prefix}/`)
-    )
-      return AuthHandler(ctx.request, authOptions)
+      if (
+        actions.includes(action as AuthAction)
+        && parsedUrl.pathname.startsWith(`${prefix}/`)
+      ) {
+        const response = await AuthHandler(request, authOptions)
 
-    return ctx.passThrough()
+        return await sendNodeResponse(res, response)
+      }
+
+      return next()
+    }
+    catch (error) {
+      return next(error as any)
+    }
   }
-
-  return platformAdapter(handler as any) as T
 }
 
 export async function getSession(
@@ -70,7 +78,7 @@ export async function getSession(
   const url = new URL(`${prefix}/session`, getURL(req))
 
   const response = await AuthHandler(
-    new Request(url, { headers: nodeHeaders }),
+    new Request(url as unknown as RequestInfo, { headers: nodeHeaders }),
     authOptions,
   )
 
