@@ -9,7 +9,7 @@ dotenv.config()
 const app = express()
 
 const authOptions: AuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
   trustHost: true,
   providers: [
     GithubProvider({
