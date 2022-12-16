@@ -7,6 +7,7 @@ importers:
       '@antfu/eslint-config': ^0.27.0
       '@auth/core': ^0.1.4
       '@hattip/adapter-node': ^0.0.22
+      '@hattip/core': ^0.0.22
       bumpp: ^8.2.1
       eslint: ^8.29.0
       requrl: ^3.0.2
@@ -20,6 +21,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config': 0.27.0_ha6vam6werchizxrnqvarmz2zu
       '@auth/core': 0.1.4
+      '@hattip/core': 0.0.22
       bumpp: 8.2.1
       eslint: 8.29.0
       taze: 0.8.4
@@ -254,7 +256,6 @@ packages:
 
   /@hattip/core/0.0.22:
     resolution: {integrity: sha512-C3SNVpDOPwDff3jigPhGr2bWe+B/1tvaFTP2nVu90VFmWCVZ6y0dT81RiBHjiRCoYX82KgAyxBiN1WD/YbgM+w==}
-    dev: false
 
   /@hattip/polyfills/0.0.22:
     resolution: {integrity: sha512-mb7zUl7KdCl511CNjqTFIm6eZ0mIyJ3PLYOoZB2fwWnxSUEq3LSkLl33K8RWgPhP/K0ACoFsSGuteEQN2lVuVA==}

@@ -3,6 +3,7 @@ import { createMiddleware } from '@hattip/adapter-node'
 import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/core'
 import { AuthHandler } from '@auth/core'
 import getURL from 'requrl'
+import type { HattipHandler } from '@hattip/core'
 
 interface AuthOptions extends BaseAuthOptions {
   /**
@@ -10,6 +11,10 @@ interface AuthOptions extends BaseAuthOptions {
    * @default '/api/auth'
    */
   prefix?: string
+  /**
+   * @experimental
+   */
+  platformAdapter?: (handler: HattipHandler) => unknown
 }
 
 const actions: AuthAction[] = [
@@ -25,7 +30,11 @@ const actions: AuthAction[] = [
 ]
 
 export function createAuthMiddleware(options: AuthOptions) {
-  const { prefix = '/api/auth', ...authOptions } = options
+  const {
+    prefix = '/api/auth',
+    platformAdapter = createMiddleware,
+    ...authOptions
+  } = options
 
   async function handler(ctx: { request: Request; passThrough(): void }) {
     const parsedUrl = new URL(ctx.request.url)
@@ -40,7 +49,7 @@ export function createAuthMiddleware(options: AuthOptions) {
     return ctx.passThrough()
   }
 
-  return createMiddleware(handler as any)
+  return platformAdapter(handler as any)
 }
 
 export async function getSession(

@@ -46,6 +46,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
     "@auth/core": "^0.1.4",
+    "@hattip/core": "^0.0.22",
     "bumpp": "^8.2.1",
     "eslint": "^8.29.0",
     "taze": "^0.8.4",
