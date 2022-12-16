@@ -1,6 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import getURL from 'requrl'
-import { writeReadableStreamToWritable } from './stream'
 
 export function createNodeHeaders(requestHeaders: IncomingMessage['headers']): Headers {
   const headers = new Headers()
@@ -35,6 +34,7 @@ export function createNodeRequest(req: IncomingMessage): Request {
   return new Request(url.href, init)
 }
 
+// Taken from https://github.com/hattipjs/hattip/blob/main/packages/adapter/adapter-node/src/common.ts
 export async function sendNodeResponse(
   res: ServerResponse,
   nodeResponse: Response,
@@ -49,9 +49,46 @@ export async function sendNodeResponse(
       res.setHeader(key, value)
   }
 
-  if (nodeResponse.body)
-    await writeReadableStreamToWritable(nodeResponse.body, res)
-  else
-    res.end()
-}
+  const contentLengthSet = nodeResponse.headers.get('content-length')
+  if (nodeResponse.body) {
+    if (contentLengthSet) {
+      for await (let chunk of nodeResponse.body as any) {
+        chunk = Buffer.from(chunk)
+        res.write(chunk)
+      }
+    }
+    else {
+      const reader = (
+        nodeResponse.body as any as AsyncIterable<Buffer | string>
+      )[Symbol.asyncIterator]()
 
+      const first = await reader.next()
+      if (first.done) {
+        res.setHeader('content-length', '0')
+      }
+      else {
+        const secondPromise = reader.next()
+        let second = await Promise.race([
+          secondPromise,
+          Promise.resolve(null),
+        ])
+
+        if (second && second.done) {
+          res.setHeader('content-length', first.value.length)
+          res.write(first.value)
+        }
+        else {
+          res.write(first.value)
+          second = await secondPromise
+          for (; !second.done; second = await reader.next())
+            res.write(Buffer.from(second.value))
+        }
+      }
+    }
+  }
+  else if (!contentLengthSet) {
+    res.setHeader('content-length', '0')
+  }
+
+  res.end()
+}

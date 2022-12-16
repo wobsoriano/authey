@@ -12,6 +12,8 @@ import {
 } from '@web-std/fetch'
 import { Blob as NodeBlob, File as NodeFile } from '@web-std/file'
 
+import { AbortController as NodeAbortController } from 'abort-controller'
+
 declare global {
   namespace NodeJS {
     interface Global {
@@ -33,6 +35,8 @@ declare global {
 export function installGlobals() {
   global.Blob = NodeBlob
   global.File = NodeFile
+
+  global.AbortController = NodeAbortController as typeof AbortController
 
   global.Headers = NodeHeaders as unknown as typeof Headers
   global.Request = NodeRequest as unknown as typeof Request

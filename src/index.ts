@@ -3,7 +3,7 @@ import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/
 import { AuthHandler } from '@auth/core'
 import getURL from 'requrl'
 import { createNodeRequest, sendNodeResponse } from './request'
-import installCrypto from './crypto'
+import { installCrypto } from './crypto'
 import { installGlobals } from './globals'
 
 installCrypto()

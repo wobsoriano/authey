@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-export default function install() {
+export function installCrypto() {
   if (globalThis.crypto)
     return
 
