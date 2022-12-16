@@ -1,7 +1,7 @@
 import { URL } from 'node:url'
 import * as dotenv from 'dotenv'
 import express from 'express'
-import { createAuthMiddleware } from 'auth-universal'
+import { createAuthMiddleware, getSession } from 'auth-universal'
 import type { AuthOptions } from '@auth/core'
 import GithubProvider from '@auth/core/providers/github'
 dotenv.config()
@@ -24,6 +24,11 @@ app.use(express.static(new URL('./public', import.meta.url).pathname))
 
 app.get('/', (req, res) => {
   res.render('index.html')
+})
+
+app.get('/api/user', async (req, res) => {
+  const session = await getSession(req, authOptions)
+  res.json(session)
 })
 
 app.listen(3000, () => {
