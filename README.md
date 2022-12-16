@@ -43,7 +43,7 @@ import { createAuthMiddleware } from 'authey'
 
 async function build() {
   const fastify = Fastify()
-  await fastify.register(require('@fastify/middie'))
+  await fastify.register(Middie)
   fastify.use(createAuthMiddleware({}))
   return fastify
 }
