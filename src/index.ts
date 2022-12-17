@@ -33,6 +33,25 @@ function shouldTrustHost() {
   return !!(process.env.AUTH_TRUST_HOST ?? process.env.VERCEL ?? process.env.NODE_ENV === 'development')
 }
 
+/**
+ * Create an express/connect compatible Auth.js middleware.
+ *
+ * @example
+ *
+ * ```ts
+ * import express from 'express'
+ * import { createAuthMiddleware } from 'authey'
+ *
+ * const app = express()
+ * app.use(createAuthMiddleware({
+ *   secret: process.env.AUTH_SECRET,
+ *   trustHost: process.env.AUTH_TRUST_HOST,
+ *   providers: [{}]
+ * }))
+ * ```
+ *
+ * @param options - [Auth.js](https://authjs.dev/reference/configuration/auth-config#options) options.
+ */
 export function createAuthMiddleware(options: AuthOptions) {
   const {
     prefix = '/api/auth',
