@@ -64,7 +64,7 @@ export function createAuthMiddleware(options: AuthOptions) {
   return async (
     req: IncomingMessage,
     res: ServerResponse,
-    next: (err?: Error) => void,
+    next?: (err?: Error) => void,
   ) => {
     try {
       const request = createNodeRequest(req)
@@ -80,10 +80,10 @@ export function createAuthMiddleware(options: AuthOptions) {
         return await sendNodeResponse(res, response)
       }
 
-      return next()
+      return next?.()
     }
     catch (error) {
-      return next(error as any)
+      return next?.(error as any)
     }
   }
 }
