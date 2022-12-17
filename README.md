@@ -45,7 +45,7 @@ import { fromNodeMiddleware } from 'h3'
 export default fromNodeMiddleware(createAuthMiddleware({}))
 ```
 
-Fastify
+[Fastify](https://github.com/wobsoriano/fastify-next-auth)
 
 ```ts
 import Fastify from 'fastify'
