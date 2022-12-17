@@ -40,6 +40,7 @@ Nuxt
 ```ts
 // server/middleware/auth.ts
 import { createAuthMiddleware } from 'authey'
+import { fromNodeMiddleware } from 'h3'
 
 export default fromNodeMiddleware(createAuthMiddleware({}))
 ```
