@@ -23,7 +23,7 @@ const app = express()
 
 const authOptions: AuthOptions = {
   secret: process.env.AUTH_SECRET,
-  trustHost: process.env.AUTH_TRUST_HOST,
+  trustHost: Boolean(process.env.AUTH_TRUST_HOST),
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
