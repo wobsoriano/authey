@@ -1,40 +1,22 @@
-import {
-  AbortController as NodeAbortController,
-  Blob as NodeBlob,
-  File as NodeFile,
-  FormData as NodeFormData,
-  Headers as NodeHeaders,
-  Request as NodeRequest,
-  Response as NodeResponse,
-  fetch as nodeFetch,
-} from 'node-fetch-native'
-
-declare global {
-  namespace NodeJS {
-    interface Global {
-      Blob: typeof NodeBlob
-      File: typeof File
-
-      Headers: typeof Headers
-      Request: typeof Request
-      Response: typeof Response
-      fetch: typeof fetch
-      FormData: typeof FormData
-
-      AbortController: typeof AbortController
-    }
-  }
-}
+import * as nodeFetch from 'node-fetch-native'
 
 export function installGlobals() {
-  globalThis.Blob = NodeBlob
-  globalThis.File = NodeFile
+  function define<S extends keyof typeof globalThis>(name: S) {
+    if (!globalThis[name]) {
+      Object.defineProperty(globalThis, name, {
+        value: (nodeFetch as any)[name],
+        writable: false,
+        configurable: true,
+      })
+    }
+  }
 
-  globalThis.Headers = NodeHeaders
-  globalThis.Request = NodeRequest
-  globalThis.Response = NodeResponse
-  globalThis.fetch = nodeFetch
-  globalThis.FormData = NodeFormData
-
-  globalThis.AbortController = NodeAbortController
+  define('fetch')
+  define('AbortController')
+  define('Blob')
+  define('File')
+  define('FormData')
+  define('Headers')
+  define('Request')
+  define('Response')
 }

@@ -7,12 +7,14 @@ importers:
       '@antfu/eslint-config': ^0.34.0
       '@auth/core': ^0.1.4
       '@polka/send-type': ^0.5.2
+      '@types/set-cookie-parser': ^2.4.2
       '@types/supertest': ^2.0.12
       bumpp: ^8.2.1
       eslint: ^8.29.0
       h3: ^1.0.2
       node-fetch-native: ^1.0.1
       requrl: ^3.0.2
+      set-cookie-parser: ^2.5.1
       supertest: ^6.3.3
       taze: ^0.8.5
       tsup: 6.5.0
@@ -22,9 +24,11 @@ importers:
       '@polka/send-type': 0.5.2
       node-fetch-native: 1.0.1
       requrl: 3.0.2
+      set-cookie-parser: 2.5.1
     devDependencies:
       '@antfu/eslint-config': 0.34.0_ha6vam6werchizxrnqvarmz2zu
       '@auth/core': 0.1.4
+      '@types/set-cookie-parser': 2.4.2
       '@types/supertest': 2.0.12
       bumpp: 8.2.1
       eslint: 8.29.0
@@ -504,6 +508,12 @@ packages:
     resolution: {integrity: sha512-z5xyF6uh8CbjAu9760KDKsH2FcDxZ2tFCsA4HIMWE6IkiYMXfVoa+4f9KX+FN0ZLsaMw1WNG2ETLA6N+/YA+cg==}
     dependencies:
       '@types/mime': 3.0.1
+      '@types/node': 18.11.15
+    dev: true
+
+  /@types/set-cookie-parser/2.4.2:
+    resolution: {integrity: sha512-fBZgytwhYAUkj/jC/FAV4RQ5EerRup1YQsXQCh8rZfiHkc4UahC192oH0smGwsXol3cL3A5oETuAHeQHmhXM4w==}
+    dependencies:
       '@types/node': 18.11.15
     dev: true
 
@@ -3807,6 +3817,10 @@ packages:
   /set-blocking/2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
     dev: true
+
+  /set-cookie-parser/2.5.1:
+    resolution: {integrity: sha512-1jeBGaKNGdEq4FgIrORu/N570dwoPYio8lSoYLWmX7sQ//0JY08Xh9o5pBcgmHQ/MbsYp/aZnOe1s1lIsbLprQ==}
+    dev: false
 
   /setprototypeof/1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}

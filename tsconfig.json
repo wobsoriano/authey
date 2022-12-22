@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "es2020",
     "module": "esnext",
-    "lib": ["esnext", "DOM"],
-    "moduleResolution": "node",
-    "esModuleInterop": true,
     "strict": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "noEmit": true,
+    "outDir": "dist",
+    "resolveJsonModule": true
   }
 }

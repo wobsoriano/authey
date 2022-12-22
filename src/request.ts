@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import getURL from 'requrl'
 import send from '@polka/send-type'
+import { splitCookiesString } from 'set-cookie-parser'
 
 export function createNodeHeaders(requestHeaders: IncomingMessage['headers']): Headers {
   const headers = new Headers()
@@ -39,13 +40,14 @@ export async function sendNodeResponse(
   res: ServerResponse,
   nodeResponse: Response,
 ): Promise<void> {
-  // @ts-expect-error: Node-fetch non-spec method returning all headers and their values as array
-  console.log(nodeResponse.headers.raw())
-  // @ts-expect-error: Node-fetch non-spec method returning all headers and their values as array
-  for (const [key, values] of Object.entries(nodeResponse.headers.raw())) {
-    // @ts-expect-error: Node-fetch non-spec method returning all headers and their values as array
-    for (const value of values)
+  for (const [key, value] of nodeResponse.headers.entries()) {
+    if (key === 'set-cookie') {
+      const cookies = splitCookiesString(nodeResponse.headers.get('set-cookie')!)
+      res.setHeader('set-cookie', cookies)
+    }
+    else {
       res.setHeader(key, value)
+    }
   }
 
   return send(res, nodeResponse.status, await nodeResponse.text())
