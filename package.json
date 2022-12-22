@@ -1,6 +1,6 @@
 {
   "name": "authey",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "packageManager": "pnpm@7.19.0",
   "description": "Expose Auth.js REST APIs to your express/connect apps.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
@@ -11,7 +11,12 @@
     "url": "git+https://github.com/wobsoriano/authey.git"
   },
   "bugs": "https://github.com/wobsoriano/authey/issues",
-  "keywords": ["auth", "next-auth", "authjs", "authentication"],
+  "keywords": [
+    "auth",
+    "next-auth",
+    "authjs",
+    "authentication"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
