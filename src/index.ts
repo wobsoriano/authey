@@ -6,8 +6,8 @@ import { createNodeRequest, sendNodeResponse } from './request'
 import { installCrypto } from './crypto'
 import { installGlobals } from './globals'
 
-installCrypto()
 installGlobals()
+installCrypto()
 
 interface AuthOptions extends BaseAuthOptions {
   /**
