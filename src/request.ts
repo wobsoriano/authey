@@ -40,6 +40,8 @@ export async function sendNodeResponse(
   nodeResponse: Response,
 ): Promise<void> {
   // @ts-expect-error: Node-fetch non-spec method returning all headers and their values as array
+  console.log(nodeResponse.headers.raw())
+  // @ts-expect-error: Node-fetch non-spec method returning all headers and their values as array
   for (const [key, values] of Object.entries(nodeResponse.headers.raw())) {
     // @ts-expect-error: Node-fetch non-spec method returning all headers and their values as array
     for (const value of values)

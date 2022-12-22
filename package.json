@@ -41,10 +41,7 @@
   },
   "dependencies": {
     "@polka/send-type": "^0.5.2",
-    "@web-std/fetch": "^4.1.0",
-    "@web-std/file": "^3.0.2",
-    "@web-std/stream": "^1.0.1",
-    "abort-controller": "^3.0.0",
+    "node-fetch-native": "^1.0.1",
     "requrl": "^3.0.2"
   },
   "devDependencies": {

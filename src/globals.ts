@@ -1,23 +1,18 @@
 import {
-  ReadableStream as NodeReadableStream,
-  WritableStream as NodeWritableStream,
-} from '@web-std/stream'
-
-import {
+  AbortController as NodeAbortController,
+  Blob as NodeBlob,
+  File as NodeFile,
   FormData as NodeFormData,
   Headers as NodeHeaders,
   Request as NodeRequest,
   Response as NodeResponse,
   fetch as nodeFetch,
-} from '@web-std/fetch'
-import { Blob as NodeBlob, File as NodeFile } from '@web-std/file'
-
-import { AbortController as NodeAbortController } from 'abort-controller'
+} from 'node-fetch-native'
 
 declare global {
   namespace NodeJS {
     interface Global {
-      Blob: typeof Blob
+      Blob: typeof NodeBlob
       File: typeof File
 
       Headers: typeof Headers
@@ -26,24 +21,20 @@ declare global {
       fetch: typeof fetch
       FormData: typeof FormData
 
-      ReadableStream: typeof ReadableStream
-      WritableStream: typeof WritableStream
+      AbortController: typeof AbortController
     }
   }
 }
 
 export function installGlobals() {
-  global.Blob = NodeBlob
-  global.File = NodeFile
+  globalThis.Blob = NodeBlob
+  globalThis.File = NodeFile
 
-  global.AbortController = NodeAbortController as typeof AbortController
+  globalThis.Headers = NodeHeaders
+  globalThis.Request = NodeRequest
+  globalThis.Response = NodeResponse
+  globalThis.fetch = nodeFetch
+  globalThis.FormData = NodeFormData
 
-  global.Headers = NodeHeaders as unknown as typeof Headers
-  global.Request = NodeRequest as unknown as typeof Request
-  global.Response = NodeResponse as unknown as typeof Response
-  global.fetch = nodeFetch as typeof fetch
-  global.FormData = NodeFormData
-
-  global.ReadableStream = NodeReadableStream
-  global.WritableStream = NodeWritableStream
+  globalThis.AbortController = NodeAbortController
 }
