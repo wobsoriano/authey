@@ -11,7 +11,7 @@
     "url": "git+https://github.com/wobsoriano/authey.git"
   },
   "bugs": "https://github.com/wobsoriano/authey/issues",
-  "keywords": [],
+  "keywords": ["auth", "next-auth", "authjs", "authentication"],
   "sideEffects": false,
   "exports": {
     ".": {
