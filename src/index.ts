@@ -2,7 +2,7 @@ import type { IncomingMessage, ServerResponse } from 'http'
 import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/core'
 import { AuthHandler } from '@auth/core'
 import getURL from 'requrl'
-import { createNodeRequest, sendNodeResponse } from './request'
+import { createNodeHeaders, createNodeRequest, sendNodeResponse } from './fetch'
 import { installCrypto } from './crypto'
 import { installGlobals } from './globals'
 
@@ -97,18 +97,11 @@ export async function getSession(
   options.secret ??= process.env.AUTH_SECRET
   options.trustHost ??= shouldTrustHost()
 
-  const nodeHeaders = new Headers()
-
-  for (const key in req.headers) {
-    const value = req.headers[key]
-    const formattedValue = Array.isArray(value) ? value.filter(Boolean).join(', ') : value
-    nodeHeaders.append(key, formattedValue as string)
-  }
-
   const url = new URL(`${prefix}/session`, getURL(req))
+  const headers = createNodeHeaders(req.headers)
 
   const response = await AuthHandler(
-    new Request(url as unknown as RequestInfo, { headers: nodeHeaders }),
+    new Request(url as unknown as RequestInfo, { headers }),
     authOptions,
   )
 
