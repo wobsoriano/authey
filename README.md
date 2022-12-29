@@ -43,7 +43,7 @@ Nuxt
 import { createAuthMiddleware } from 'authey'
 import { fromNodeMiddleware } from 'h3'
 
-export default fromNodeMiddleware(createAuthMiddleware({}))
+export default fromNodeMiddleware(createAuthMiddleware(authOptions))
 ```
 
 Fastify
@@ -56,7 +56,7 @@ import { createAuthMiddleware } from 'authey'
 async function build() {
   const fastify = Fastify()
   await fastify.register(Middie)
-  fastify.use(createAuthMiddleware({}))
+  fastify.use(createAuthMiddleware(authOptions))
   return fastify
 }
 
