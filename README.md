@@ -21,7 +21,7 @@ import GithubProvider from '@auth/core/providers/github'
 
 const app = express()
 
-const authOptions: AuthConfig = {
+const authConfig: AuthConfig = {
   // You can generate a secret here https://generate-secret.vercel.app/32
   secret: process.env.AUTH_SECRET,
   trustHost: Boolean(process.env.AUTH_TRUST_HOST),
@@ -33,7 +33,7 @@ const authOptions: AuthConfig = {
   ],
 }
 
-app.use(createAuthMiddleware(authOptions))
+app.use(createAuthMiddleware(authConfig))
 ```
 
 Nuxt
@@ -43,7 +43,7 @@ Nuxt
 import { createAuthMiddleware } from 'authey'
 import { fromNodeMiddleware } from 'h3'
 
-export default fromNodeMiddleware(createAuthMiddleware(authOptions))
+export default fromNodeMiddleware(createAuthMiddleware(authConfig))
 ```
 
 Fastify
@@ -56,7 +56,7 @@ import { createAuthMiddleware } from 'authey'
 async function build() {
   const fastify = Fastify()
   await fastify.register(Middie)
-  fastify.use(createAuthMiddleware(authOptions))
+  fastify.use(createAuthMiddleware(authConfig))
   return fastify
 }
 
