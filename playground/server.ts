@@ -2,13 +2,13 @@ import { URL } from 'node:url'
 import * as dotenv from 'dotenv'
 import express from 'express'
 import { createAuthMiddleware, getSession } from 'authey'
-import type { AuthOptions } from '@auth/core'
+import type { AuthConfig } from '@auth/core/types'
 import GithubProvider from '@auth/core/providers/github'
 dotenv.config()
 
 const app = express()
 
-const authOptions: AuthOptions = {
+const authOptions: AuthConfig = {
   secret: process.env.AUTH_SECRET,
   trustHost: true,
   providers: [
