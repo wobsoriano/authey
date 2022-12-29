@@ -2,10 +2,10 @@
 
 Expose [Auth.js](https://authjs.dev/) [REST APIs](https://authjs.dev/reference/rest-api) to your express/[connect](https://www.npmjs.com/package/connect) apps.
 
-## Install
+## Installation
 
 ```bash
-pnpm add @auth/core authey
+npm install @auth/core authey
 ```
 
 ## Usage
@@ -16,12 +16,13 @@ Express
 import express from 'express'
 
 import { createAuthMiddleware } from 'authey'
-import type { AuthOptions } from '@auth/core'
+import type { AuthConfig } from '@auth/core'
 import GithubProvider from '@auth/core/providers/github'
 
 const app = express()
 
-const authOptions: AuthOptions = {
+const authOptions: AuthConfig = {
+  // You can generate a secret here https://generate-secret.vercel.app/32
   secret: process.env.AUTH_SECRET,
   trustHost: Boolean(process.env.AUTH_TRUST_HOST),
   providers: [
@@ -64,4 +65,4 @@ async function build() {
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [Robert Soriano](https://github.com/wobsoriano)
+MIT
