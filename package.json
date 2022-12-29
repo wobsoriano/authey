@@ -1,6 +1,6 @@
 {
   "name": "authey",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "packageManager": "pnpm@7.19.0",
   "description": "Expose Auth.js REST APIs to your express/connect apps.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
