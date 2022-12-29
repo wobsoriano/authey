@@ -2,7 +2,7 @@
   "name": "authey",
   "version": "0.2.0",
   "packageManager": "pnpm@7.19.0",
-  "description": "Expose Auth.js REST APIs to your express/connect apps.",
+  "description": "Expose Auth.js REST APIs to any connect-compatible Node.js framework.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/wobsoriano/authey#readme",
