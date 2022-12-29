@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'http'
-import type { AuthAction, AuthOptions as BaseAuthOptions, Session } from '@auth/core'
-import { AuthHandler } from '@auth/core'
+import type { AuthAction, AuthConfig as BaseAuthConfig, Session } from '@auth/core/types'
+import { Auth } from '@auth/core'
 import getURL from 'requrl'
 import { createNodeHeaders, createNodeRequest, sendNodeResponse } from './fetch'
 import { installCrypto } from './crypto'
@@ -9,9 +9,12 @@ import { installGlobals } from './globals'
 installGlobals()
 installCrypto()
 
-interface AuthOptions extends BaseAuthOptions {
+interface AuthConfig extends BaseAuthConfig {
   /**
    * Defines the base path for the auth routes.
+   * If you change the default value,
+   * you must also update the callback URL used by the [providers](https://authjs.dev/reference/core/modules/providers).
+   *
    * @default '/api/auth'
    */
   prefix?: string
@@ -26,7 +29,6 @@ const actions: AuthAction[] = [
   'callback',
   'verify-request',
   'error',
-  '_log',
 ]
 
 function shouldTrustHost() {
@@ -52,7 +54,7 @@ function shouldTrustHost() {
  *
  * @param options - [Auth.js](https://authjs.dev/reference/configuration/auth-config#options) options.
  */
-export function createAuthMiddleware(options: AuthOptions) {
+export function createAuthMiddleware(options: AuthConfig) {
   const {
     prefix = '/api/auth',
     ...authOptions
@@ -75,7 +77,7 @@ export function createAuthMiddleware(options: AuthOptions) {
         actions.includes(action as AuthAction)
         && parsedUrl.pathname.startsWith(`${prefix}/`)
       ) {
-        const response = await AuthHandler(request, authOptions)
+        const response = await Auth(request, authOptions)
 
         return await sendNodeResponse(res, response)
       }
@@ -90,23 +92,18 @@ export function createAuthMiddleware(options: AuthOptions) {
 
 export async function getSession(
   req: IncomingMessage,
-  options: AuthOptions,
+  options: AuthConfig,
 ): Promise<Session | null> {
   const { prefix = '/api/auth', ...authOptions } = options
 
   options.secret ??= process.env.AUTH_SECRET
-  options.trustHost ??= shouldTrustHost()
+  options.trustHost ??= true
 
   const url = new URL(`${prefix}/session`, getURL(req))
-  const headers = createNodeHeaders(req.headers)
-
-  const response = await AuthHandler(
-    new Request(url as unknown as RequestInfo, { headers }),
-    authOptions,
-  )
+  const request = new Request(url, { headers: createNodeHeaders(req.headers) })
+  const response = await Auth(request, authOptions)
 
   const { status = 200 } = response
-
   const data = await response.json()
 
   if (!data || !Object.keys(data).length)
