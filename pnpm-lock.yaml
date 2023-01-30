@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.34.0
-      '@auth/core': ^0.2.3
+      '@auth/core': ^0.3.0
       '@polka/send-type': ^0.5.2
       '@types/set-cookie-parser': ^2.4.2
       '@types/supertest': ^2.0.12
@@ -27,7 +27,7 @@ importers:
       set-cookie-parser: 2.5.1
     devDependencies:
       '@antfu/eslint-config': 0.34.0_lzzuuodtsqwxnvqeq4g4likcqa
-      '@auth/core': 0.2.3
+      '@auth/core': 0.3.0
       '@types/set-cookie-parser': 2.4.2
       '@types/supertest': 2.0.12
       bumpp: 8.2.1
@@ -154,8 +154,8 @@ packages:
     resolution: {integrity: sha512-CQkeV+oJxUazwjlHD0/3ZD08QWKuGQkhnrKo3e6ly5pd48VUpXbb77q0xMU4+vc2CkJnDS02Eq/M9ugyX20XZA==}
     dev: true
 
-  /@auth/core/0.2.3:
-    resolution: {integrity: sha512-GJJkCh1jmI1kJlGmVOGMHRimQbHQCCwgmZLIx0Fpod1e0g4gtk6hGL5LmKjb7rN3j3HQbxQOEg5j6jJLZ7dDJw==}
+  /@auth/core/0.3.0:
+    resolution: {integrity: sha512-4bmPzEiQKSXD825Jrcgj7igSFghBTpkSQ6U/jnYABJRQGhwnWJ/q9FHxEo6SGZWvYvpjOrvJOWhrP4Xng4CGUQ==}
     peerDependencies:
       nodemailer: 6.8.0
     peerDependenciesMeta:
@@ -165,7 +165,7 @@ packages:
       '@panva/hkdf': 1.0.2
       cookie: 0.5.0
       jose: 4.11.1
-      oauth4webapi: 2.0.5
+      oauth4webapi: 2.0.6
       preact: 10.11.3
       preact-render-to-string: 5.2.3_preact@10.11.3
     dev: true
@@ -3239,8 +3239,8 @@ packages:
       boolbase: 1.0.0
     dev: true
 
-  /oauth4webapi/2.0.5:
-    resolution: {integrity: sha512-KmoR3KxCwmr9KvL/c/6UVzQnc4CUjo+j8NSgD3bWYlZXpUmyOVw97nDVb0BKZhCcUtGsbll16v8vsnR5JbTZ9A==}
+  /oauth4webapi/2.0.6:
+    resolution: {integrity: sha512-smacvTzkfgWxXTTfjZeKeCwtiZ7/HIgM+PWcgTltAmEbfmJQRfl/nbWktA9tnzSjezvWNg9N96PJomuMi0zkxQ==}
     dev: true
 
   /object-assign/4.1.1:

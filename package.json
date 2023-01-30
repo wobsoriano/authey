@@ -42,7 +42,7 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@auth/core": "^0.2.0"
+    "@auth/core": "^0.3.0"
   },
   "dependencies": {
     "@polka/send-type": "^0.5.2",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.0",
-    "@auth/core": "^0.2.3",
+    "@auth/core": "^0.3.0",
     "@types/set-cookie-parser": "^2.4.2",
     "@types/supertest": "^2.0.12",
     "bumpp": "^8.2.1",
