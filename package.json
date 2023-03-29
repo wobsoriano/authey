@@ -46,23 +46,23 @@
   },
   "dependencies": {
     "@polka/send-type": "^0.5.2",
-    "node-fetch-native": "^1.0.1",
+    "node-fetch-native": "^1.0.2",
     "requrl": "^3.0.2",
-    "set-cookie-parser": "^2.5.1"
+    "set-cookie-parser": "^2.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.34.0",
-    "@auth/core": "^0.3.0",
+    "@antfu/eslint-config": "^0.37.0",
+    "@auth/core": "^0.5.1",
     "@types/set-cookie-parser": "^2.4.2",
     "@types/supertest": "^2.0.12",
-    "bumpp": "^8.2.1",
-    "eslint": "^8.30.0",
-    "h3": "^1.0.2",
+    "bumpp": "^9.0.0",
+    "eslint": "^8.37.0",
+    "h3": "^1.6.4",
     "supertest": "^6.3.3",
-    "taze": "^0.8.5",
-    "tsup": "6.5.0",
-    "typescript": "^4.9.4",
-    "vitest": "^0.24.5"
+    "taze": "^0.9.1",
+    "tsup": "6.7.0",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.8"
   },
   "eslintConfig": {
     "extends": "@antfu"
