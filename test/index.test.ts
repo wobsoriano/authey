@@ -4,13 +4,14 @@ import { beforeEach, describe, expect, test } from 'vitest'
 import type { App } from 'h3'
 import { createApp, fromNodeMiddleware, toNodeListener } from 'h3'
 import GithubProvider from '@auth/core/providers/github'
-import type { AuthOptions } from '@auth/core'
+import type { AuthConfig } from '@auth/core'
 import { createAuthMiddleware } from '../src'
 
-const authOptions: AuthOptions = {
+const authOptions: AuthConfig = {
   secret: 'SOME_SECRET_FOR_TESTING',
   trustHost: true,
   providers: [
+    // @ts-expect-error: TODO
     GithubProvider({
       clientId: '',
       clientSecret: '',
