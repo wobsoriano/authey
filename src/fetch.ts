@@ -28,6 +28,7 @@ export function createNodeRequest(req: IncomingMessage): Request {
   const init: RequestInit = {
     method: req.method,
     headers: createNodeHeaders(req.headers),
+    duplex: 'half'
   }
 
   if (req.method !== 'GET' && req.method !== 'HEAD')
