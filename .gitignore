@@ -4,10 +4,14 @@
 *.log
 *.tgz
 coverage
-dist
+
 lib-cov
 logs
 node_modules
 temp
 .vscode/settings.json
 .env
+
+package-lock.json
+package.json
+pnpm-lock.yaml
