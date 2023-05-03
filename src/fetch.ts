@@ -28,7 +28,8 @@ export function createNodeRequest(req: IncomingMessage): Request {
   const init: RequestInit = {
     method: req.method,
     headers: createNodeHeaders(req.headers),
-    duplex: 'half'
+    // @ts-expect-error: Internal. Check https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1483
+    duplex: 'half',
   }
 
   if (req.method !== 'GET' && req.method !== 'HEAD')
