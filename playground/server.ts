@@ -12,6 +12,7 @@ const authOptions: AuthConfig = {
   secret: process.env.AUTH_SECRET,
   trustHost: true,
   providers: [
+    // @ts-expect-error: TODO
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
