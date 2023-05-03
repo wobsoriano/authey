@@ -1,6 +1,6 @@
 # Authey
 
-Expose [Auth.js](https://authjs.dev/) [REST APIs](https://authjs.dev/reference/rest-api) to any [connect](https://github.com/senchalabs/connect)-compatible Node.js framework.
+Expose [Auth.js](https://authjs.dev/) [REST APIs](https://next-auth.js.org/getting-started/rest-api) to any [connect](https://github.com/senchalabs/connect)-compatible Node.js framework.
 
 ## Installation
 
