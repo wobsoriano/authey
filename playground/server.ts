@@ -8,17 +8,16 @@ dotenv.config()
 
 const app = express()
 
-const authOptions: AuthConfig = {
+const authOptions = {
   secret: process.env.AUTH_SECRET,
   trustHost: true,
   providers: [
-    // @ts-expect-error: TODO
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
   ],
-}
+} as AuthConfig
 
 app.use(createAuthMiddleware(authOptions))
 app.use(express.static(new URL('./public', import.meta.url).pathname))
