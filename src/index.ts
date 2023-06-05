@@ -9,7 +9,7 @@ import { installGlobals } from './globals'
 installGlobals()
 installCrypto()
 
-interface AuthConfig extends BaseAuthConfig {
+export interface AuthConfig extends BaseAuthConfig {
   /**
    * Defines the base path for the auth routes.
    * If you change the default value,
