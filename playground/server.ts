@@ -4,6 +4,7 @@ import express from 'express'
 import { createAuthMiddleware, getSession } from 'authey'
 import type { AuthConfig } from '@auth/core/types'
 import GithubProvider from '@auth/core/providers/github'
+
 dotenv.config()
 
 const app = express()
