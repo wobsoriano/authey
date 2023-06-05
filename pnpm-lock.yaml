@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 importers:
 
@@ -21,8 +25,8 @@ importers:
         specifier: ^0.39.1
         version: 0.39.1(eslint@8.41.0)(typescript@5.0.4)
       '@auth/core':
-        specifier: ^0.7.1
-        version: 0.7.1
+        specifier: ^0.8.1
+        version: 0.8.1
       '@types/set-cookie-parser':
         specifier: ^2.4.2
         version: 2.4.2
@@ -180,8 +184,8 @@ packages:
     resolution: {integrity: sha512-CQkeV+oJxUazwjlHD0/3ZD08QWKuGQkhnrKo3e6ly5pd48VUpXbb77q0xMU4+vc2CkJnDS02Eq/M9ugyX20XZA==}
     dev: true
 
-  /@auth/core@0.7.1:
-    resolution: {integrity: sha512-aAgzC/VlfnvxsFYp5Wau1pfIltRUBvfVxECR0imDPUznwXIkD9alvrai60tfImtPfXp1fnJpcKfiONpF5Rg8VQ==}
+  /@auth/core@0.8.1:
+    resolution: {integrity: sha512-WudBmZudZ/cvykxHV5hIwrYsd7AlETQ535O7w3sSiiumT28+U9GvBb8oSRtfzxpW9rym3lAdfeTJqGA8U4FecQ==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
