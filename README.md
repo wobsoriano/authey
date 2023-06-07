@@ -17,7 +17,9 @@ import express from 'express'
 
 import { createAuthMiddleware } from 'authey'
 import type { AuthConfig } from '@auth/core'
+import AppleProvider from '@auth/core/providers/apple'
 import GithubProvider from '@auth/core/providers/github'
+import EmailProvider from '@auth/core/providers/email'
 
 const app = express()
 
@@ -26,9 +28,19 @@ const authConfig: AuthConfig = {
   secret: process.env.AUTH_SECRET,
   trustHost: Boolean(process.env.AUTH_TRUST_HOST),
   providers: [
+    // OAuth authentication providers
+    AppleProvider({
+      clientId: process.env.APPLE_ID,
+      clientSecret: process.env.APPLE_SECRET,
+    }),
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    }),
+    // Sign in with passwordless email link
+    EmailProvider({
+      server: process.env.MAIL_SERVER,
+      from: '<no-reply@example.com>',
     }),
   ],
 }
