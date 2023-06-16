@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'http'
-import type { AuthAction, AuthConfig as BaseAuthConfig, Session } from '@auth/core/types'
+import type { AuthAction, Awaitable, AuthConfig as BaseAuthConfig, Session } from '@auth/core/types'
 import { Auth } from '@auth/core'
 import getURL from 'requrl'
 import { createNodeHeaders, createNodeRequest, sendNodeResponse } from './fetch'
@@ -18,6 +18,13 @@ export interface AuthConfig extends BaseAuthConfig {
    * @default '/api/auth'
    */
   prefix?: string
+
+  /**
+   * Return a callback that can be used to modify the response before it is sent.
+   * This function is called before the request is processed by Auth.js.
+   * The callback is called after the request is processed by Auth.js.
+   */
+  conform?: (request: Request) => Awaitable<(response: Response) => Awaitable<Response>>
 }
 
 const actions: AuthAction[] = [
@@ -57,6 +64,7 @@ function shouldTrustHost() {
 export function createAuthMiddleware(options: AuthConfig) {
   const {
     prefix = '/api/auth',
+    conform = (_: Request) => (res: Response) => res,
     ...authOptions
   } = options
 
@@ -77,9 +85,11 @@ export function createAuthMiddleware(options: AuthConfig) {
         actions.includes(action as AuthAction)
         && parsedUrl.pathname.startsWith(`${prefix}/`)
       ) {
+        const conformer = await conform(request)
+
         const response = await Auth(request, authOptions)
 
-        return await sendNodeResponse(res, response)
+        return await sendNodeResponse(res, await conformer(response))
       }
 
       return next?.()
