@@ -71,8 +71,8 @@ importers:
         specifier: ^4.17.17
         version: 4.17.17
       dotenv:
-        specifier: ^16.1.4
-        version: 16.1.4
+        specifier: ^16.3.1
+        version: 16.3.1
       esno:
         specifier: ^0.16.3
         version: 0.16.3
@@ -1291,7 +1291,7 @@ packages:
     dependencies:
       chokidar: 3.5.3
       defu: 6.1.2
-      dotenv: 16.1.4
+      dotenv: 16.3.1
       giget: 1.1.2
       jiti: 1.18.2
       mlly: 1.2.0
@@ -1732,8 +1732,8 @@ packages:
       domhandler: 5.0.3
     dev: true
 
-  /dotenv@16.1.4:
-    resolution: {integrity: sha512-m55RtE8AsPeJBpOIFKihEmqUcoVncQIwo7x9U8ZwLEZw9ZpXboz2c+rvog+jUaJvVrZ5kBOeYQBX5+8Aa/OZQw==}
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
     dev: true
 
