@@ -11,7 +11,6 @@ const authOptions: AuthConfig = {
   secret: 'SOME_SECRET_FOR_TESTING',
   trustHost: true,
   providers: [
-    // @ts-expect-error: TODO
     GithubProvider({
       clientId: '',
       clientSecret: '',
