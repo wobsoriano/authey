@@ -94,8 +94,9 @@ export function createAuthMiddleware(options: AuthConfig) {
 
       return next?.()
     }
-    catch (error) {
-      return next?.(error as any)
+    catch (err) {
+      const error = err as Error
+      return next?.(error)
     }
   }
 }
