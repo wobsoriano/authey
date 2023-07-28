@@ -1,7 +1,7 @@
 {
   "name": "authey",
   "version": "0.7.0",
-  "packageManager": "pnpm@8.6.9",
+  "packageManager": "pnpm@8.6.10",
   "description": "Expose Auth.js REST APIs to any connect-compatible Node.js framework.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@auth/core": "^0.9.0"
+    "@auth/core": ">=0.10.0"
   },
   "dependencies": {
     "@polka/send-type": "^0.5.2",
@@ -56,7 +56,7 @@
     "@types/set-cookie-parser": "^2.4.3",
     "@types/supertest": "^2.0.12",
     "bumpp": "^9.1.1",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "h3": "^1.7.1",
     "supertest": "^6.3.3",
     "taze": "^0.11.2",
