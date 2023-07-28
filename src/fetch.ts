@@ -1,4 +1,4 @@
-import type { IncomingMessage, ServerResponse } from 'node:http'
+import type { IncomingMessage, ServerResponse } from 'http'
 import getURL from 'requrl'
 import send from '@polka/send-type'
 import { splitCookiesString } from 'set-cookie-parser'

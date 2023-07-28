@@ -67,7 +67,8 @@
   "eslintConfig": {
     "extends": "@antfu",
     "rules": {
-      "n/prefer-global/process": "off"
+      "n/prefer-global/process": "off",
+      "unicorn/prefer-node-protocol": "off"
     }
   }
 }

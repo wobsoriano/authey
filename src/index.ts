@@ -1,4 +1,4 @@
-import type { IncomingMessage, ServerResponse } from 'node:http'
+import type { IncomingMessage, ServerResponse } from 'http'
 import type { AuthAction, Awaitable, AuthConfig as BaseAuthConfig, Session } from '@auth/core/types'
 import { Auth } from '@auth/core'
 import getURL from 'requrl'
