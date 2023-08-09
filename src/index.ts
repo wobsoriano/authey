@@ -68,8 +68,8 @@ export function createAuthMiddleware(options: AuthConfig) {
     ...authOptions
   } = options
 
-  options.secret ??= process.env.AUTH_SECRET
-  options.trustHost ??= shouldTrustHost()
+  authOptions.secret ??= process.env.AUTH_SECRET
+  authOptions.trustHost ??= shouldTrustHost()
 
   return async (
     req: IncomingMessage,
@@ -107,8 +107,8 @@ export async function getSession(
 ): Promise<Session | null> {
   const { prefix = '/api/auth', ...authOptions } = options
 
-  options.secret ??= process.env.AUTH_SECRET
-  options.trustHost ??= true
+  authOptions.secret ??= process.env.AUTH_SECRET
+  authOptions.trustHost ??= true
 
   const url = new URL(`${prefix}/session`, getURL(req))
   const request = new Request(url, { headers: createNodeHeaders(req.headers) })
