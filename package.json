@@ -1,6 +1,6 @@
 {
   "name": "authey",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "packageManager": "pnpm@8.6.12",
   "description": "Expose Auth.js REST APIs to any connect-compatible Node.js framework.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
