@@ -1,7 +1,7 @@
 {
   "name": "authey",
   "version": "0.8.2",
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@8.9.2",
   "description": "Expose Auth.js REST APIs to any connect-compatible Node.js framework.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "license": "MIT",
@@ -51,18 +51,18 @@
     "set-cookie-parser": "^2.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.40.2",
-    "@auth/core": "^0.10.2",
-    "@types/set-cookie-parser": "^2.4.3",
-    "@types/supertest": "^2.0.12",
-    "bumpp": "^9.1.1",
-    "eslint": "^8.46.0",
-    "h3": "^1.7.1",
+    "@antfu/eslint-config": "^0.43.1",
+    "@auth/core": "^0.17.0",
+    "@types/set-cookie-parser": "^2.4.5",
+    "@types/supertest": "^2.0.15",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.51.0",
+    "h3": "^1.8.2",
     "supertest": "^6.3.3",
-    "taze": "^0.11.2",
+    "taze": "^0.11.4",
     "tsup": "7.2.0",
-    "typescript": "^5.1.6",
-    "vitest": "^0.34.1"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   },
   "eslintConfig": {
     "extends": "@antfu",
