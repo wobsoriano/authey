@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@polka/send-type": "^0.5.2",
-    "node-fetch-native": "^1.2.0",
+    "node-fetch-native": "^1.4.0",
     "requrl": "^3.0.2",
     "set-cookie-parser": "^2.6.0"
   },
